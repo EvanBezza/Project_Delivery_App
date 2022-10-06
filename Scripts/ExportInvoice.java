@@ -7,23 +7,23 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class FindCustomer {
+public class ExportInvoice {
 	/*
 	 * The determine location method checks if the driver value is empty, if not
 	 * check that the driver's city matches with the customer's city if they match,
 	 * call the export method, if they do not match write to the invoice
 	 */
 	static void determineLocation() {
-		if (FindDriver.Driver == null || Customer.city == null) {
+		if (DetermineDriver.Driver == null || Customer.city == null) {
 			System.out.println("Please make sure that the city entered for the restaurant is correct.");
 			System.exit(0);
 
-		} else if (FindDriver.Driver == null) {
+		} else if (DetermineDriver.Driver == null) {
 			System.out.println("Try entering a city you live in or check your spelling, if your spelling and city is correct, we may not currently be supporting your city for deliviries.");
 			System.exit(0);
 
 		} 
-		else if (FindDriver.Driver.getCity().equalsIgnoreCase(Customer.city)) {
+		else if (DetermineDriver.Driver.getCity().equalsIgnoreCase(Customer.city)) {
 			export(); // call export method
 		} 
 		else {
@@ -45,9 +45,9 @@ public class FindCustomer {
 			// File writer
 			BufferedWriter bw = new BufferedWriter(new FileWriter("invoice.txt"));
 			bw.write("\nOrder Number: 1234" + "\n" + "Customer: " + Customer.name + "\n" + "Email: " + Customer.eMail
-					+ "\n" + "Phone Number: " + Customer.tel + "\n" + "Location: " + FindDriver.Driver.getCity() + "\n"
+					+ "\n" + "Phone Number: " + Customer.tel + "\n" + "Location: " + DetermineDriver.Driver.getCity() + "\n"
 					+ "Special Request: " + Customer.specialReq + "\n\n" + "Your delivery driver will be "
-					+ FindDriver.Driver.getName() + "." + "\n\n"
+					+ DetermineDriver.Driver.getName() + "." + "\n\n"
 					+ "If you need to contact the restaurant dial 098 025 3365.");
 			bw.close();
 		} catch (Exception ex) {

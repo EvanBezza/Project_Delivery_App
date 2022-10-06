@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
-public class FindDriver extends Main {
+public class DetermineDriver extends Main {
 
 	// ==================================
 	// Variables for the FindDriver class
@@ -19,8 +19,8 @@ public class FindDriver extends Main {
 	String driverLoad;
 	int min = 200;
 	int count = 0;
-	FindDriver[] driverArr = new FindDriver[31];
-	static FindDriver Driver;
+	DetermineDriver[] driverArr = new DetermineDriver[31];
+	static DetermineDriver Driver;
 
 	// ============================
 	// Getters for FindDriver Class
@@ -40,7 +40,7 @@ public class FindDriver extends Main {
 	// ===============================
 	// Constructor of FindDriver class
 	// ===============================
-	public FindDriver(String name, String driverCity, String driverLoad) {
+	public DetermineDriver(String name, String driverCity, String driverLoad) {
 		this.name = name;
 		this.driverCity = driverCity;
 		this.driverLoad = driverLoad;
@@ -75,7 +75,7 @@ public class FindDriver extends Main {
 						}
 
 						// Create new object and add to object array
-						driverArr[count] = new FindDriver(name, driverCity, driverLoad);
+						driverArr[count] = new DetermineDriver(name, driverCity, driverLoad);
 					}
 				}
 			} catch (FileNotFoundException e) {

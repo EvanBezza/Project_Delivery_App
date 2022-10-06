@@ -15,7 +15,7 @@ public class Restaurant extends Main {
 		} else {
 			this.city = city;
 			// Create a new FindDriver object (empty)
-			FindDriver findDriver = new FindDriver(null, null, null);
+			DetermineDriver findDriver = new DetermineDriver(null, null, null);
 			findDriver.readDoc(); // call readDoc method
 			findDriver.calculateDriver(city.replaceAll("[\\\n\\t]", " ").replaceAll(" ", ""));  // call calculateDriver
 																								// with restaurant city

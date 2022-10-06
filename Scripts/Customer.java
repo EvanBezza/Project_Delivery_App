@@ -21,6 +21,6 @@ public class Customer extends Main {
 		Customer.specialReq = specialReq;
 		Customer.city = city.replaceAll("[\\\n\\t]", " ").replaceAll(" ", "");
 		// call determineLocation method with FindCustomer class
-		FindCustomer.determineLocation();
+		ExportInvoice.determineLocation();
 	}
 }
