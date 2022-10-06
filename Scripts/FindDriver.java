@@ -1,7 +1,7 @@
 //Student: Evan Bezuidenhout
 //Level: 2
-//Task: 7
-//Compulsory Task: 2
+//Task: 11
+//Compulsory Task: 
 //File: FindDriver.java
 
 import java.io.BufferedReader;
@@ -52,36 +52,36 @@ public class FindDriver extends Main {
 	// after the values are split into separate data sets a new FindDriver object is
 	// constructed with the extracted info and added to an object array called
 	// driverArr.
-	void ReadDoc() {
-		if(driverArr.length == 31) {
+	void readDoc() {
+		if (driverArr.length == 31) {
 			try {
 				// Read through each line of the txt doc
-				BufferedReader br = new BufferedReader(new FileReader("drivers.txt"));
-				Scanner sc = new Scanner(br);
-				// wile the txt doc has a next line
-				while (sc.hasNextLine()) {
-					count++;
-					String[] values = sc.nextLine().split(","); // split each line into their own values by comma
-					
-					// Add each data value to a variable
-					name = values[0].replaceAll(" ", "");
-					driverCity = values[1].replaceAll(" ", "");
-					
-					// check if the drivers load is empty and set it to 0
-					if (values[2].replaceAll(" ", "").equals("")) {
-						driverLoad = "0";
-					} else {
-						driverLoad = values[2].replaceAll(" ", "");
+				BufferedReader br = new BufferedReader(new FileReader("deliveryDrivers.txt"));
+				try (Scanner sc = new Scanner(br)) {
+					// wile the txt doc has a next line
+					while (sc.hasNextLine()) {
+						count++;
+						String[] values = sc.nextLine().split(","); // split each line into their own values by comma
+
+						// Add each data value to a variable
+						name = values[0].replaceAll(" ", "");
+						driverCity = values[1].replaceAll(" ", "");
+
+						// check if the drivers load is empty and set it to 0
+						if (values[2].replaceAll(" ", "").equals("")) {
+							driverLoad = "0";
+						} else {
+							driverLoad = values[2].replaceAll(" ", "");
+						}
+
+						// Create new object and add to object array
+						driverArr[count] = new FindDriver(name, driverCity, driverLoad);
 					}
-					
-					// Create new object and add to object array
-					driverArr[count] = new FindDriver(name, driverCity, driverLoad);
 				}
 			} catch (FileNotFoundException e) {
-				System.out.println("The drivers.txt file is not avaialble, make sure to place it in the same folder as the script.");
+				System.out.println("The deliveryDrivers.txt.txt file is not avaialble, make sure to place it in the same folder as the script.");
 			}
-		}
-		else {
+		} else {
 			System.out.println("Please increase or decrease the amount of drivers in your txt file to 31 users.");
 		}
 	}
@@ -94,8 +94,8 @@ public class FindDriver extends Main {
 	 * restaurant are ideal set the variable 'driver' to the value of that driver
 	 * object
 	 */
-	void CalculateDriver(String restaurantLocation) {
-		if(driverArr.length == 31) {
+	void calculateDriver(String restaurantLocation) {
+		if (driverArr.length == 31) {
 			// Loop through array of read objects
 			for (int i = 1; i < driverArr.length; i++) {
 				// if the driver city matches the restaurant
@@ -110,13 +110,11 @@ public class FindDriver extends Main {
 			// loop through Arr and see if the location of driver and restaurant match up
 			// along with the lowest load.
 			for (int j = 1; j < driverArr.length; j++) {
-				if (driverArr[j].getCity().equalsIgnoreCase(restaurantLocation)
-						&& driverArr[j].getLoad().equals(String.valueOf(min))) {
+				if (driverArr[j].getCity().equalsIgnoreCase(restaurantLocation) && driverArr[j].getLoad().equals(String.valueOf(min))) {
 					Driver = driverArr[j]; // set driver to value of object
 				}
-			}			
-		}
-		else {
+			}
+		} else {
 			// exit the program
 			System.exit(0);
 		}
