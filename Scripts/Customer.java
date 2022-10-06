@@ -1,7 +1,7 @@
 //Student: Evan Bezuidenhout
 //Level: 2
-//Task: 7
-//Compulsory Task: 2
+//Task: 11
+//Compulsory Task: 
 //File: Customer.java
 
 public class Customer extends Main {
@@ -19,8 +19,8 @@ public class Customer extends Main {
 		Customer.tel = tel;
 		Customer.eMail = eMail;
 		Customer.specialReq = specialReq;
-		Customer.city = city;
+		Customer.city = city.replaceAll("[\\\n\\t]", " ").replaceAll(" ", "");
 		// call determineLocation method with FindCustomer class
-		FindCustomer.DetermineLocation();
+		ExportInvoice.determineLocation();
 	}
 }
